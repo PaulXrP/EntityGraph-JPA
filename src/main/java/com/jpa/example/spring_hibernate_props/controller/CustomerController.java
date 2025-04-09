@@ -39,12 +39,6 @@ public class CustomerController {
         List<Customer> allCustomers = customerService.fetchAllWithAddresses();
         return new ResponseEntity<>(allCustomers, HttpStatus.FOUND);
     }
-
-    @GetMapping("/ping")
-    public ResponseEntity<String> ping() {
-        return new ResponseEntity<>("pong", HttpStatus.OK);
-    }
-
 }
 
 
