@@ -33,4 +33,12 @@ public class CustomerController {
         List<Customer> allCustomers = customerService.getAllCustomers();
         return new ResponseEntity<>(allCustomers, HttpStatus.FOUND);
     }
+
+    @GetMapping("/fetchAll")
+    public ResponseEntity<List<Customer>> fetchAllCustomersWithAddresses() {
+        List<Customer> allCustomers = customerService.fetchAllWithAddresses();
+        return new ResponseEntity<>(allCustomers, HttpStatus.FOUND);
+    }
 }
+
+

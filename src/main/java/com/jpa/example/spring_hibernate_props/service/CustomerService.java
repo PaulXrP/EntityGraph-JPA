@@ -33,4 +33,8 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public List<Customer> fetchAllWithAddresses() {
+        return customerRepository.fetchCustomersWithAddresses();
+    }
+
 }
