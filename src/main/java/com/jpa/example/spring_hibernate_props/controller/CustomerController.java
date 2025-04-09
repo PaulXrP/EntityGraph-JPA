@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -25,6 +26,18 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long customerId) {
         Customer customer = customerService.getCustomer(customerId);
+        return new ResponseEntity<>(customer, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/customised/{customerId}")
+    public ResponseEntity<Optional<Customer>> getCustomerById2(@PathVariable Long customerId) {
+        Optional<Customer> customer = customerService.getCustomerById(customerId);
+        return new ResponseEntity<>(customer, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/fetch/{customerId}")
+    public ResponseEntity<Optional<Customer>> getCustomerByIdWithAddress(@PathVariable Long customerId) {
+        Optional<Customer> customer = customerService.getCustomerByIdWithAddresses(customerId);
         return new ResponseEntity<>(customer, HttpStatus.FOUND);
     }
 
